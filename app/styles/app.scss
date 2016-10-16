@@ -1,1 +1,7 @@
-@import 'ember-paper';
+// Define desired color palettes.
+$primary: "deep-orange";
+$accent: "orange";
+$warn: "amber";
+
+// Import the rest of ember-paper.
+@import "ember-paper";
