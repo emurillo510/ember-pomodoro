@@ -1,1 +1,7 @@
-{{outlet}}
+<ul>
+{{#each model as |pomodoro|}}
+    <li>{{#link-to 'pomodoros.show' pomodoro}}{{pomodoro.id}} | {{pomodoro.name}} | {{pomodoro.status}}{{/link-to}}</li>
+{{/each}}
+
+{{#link-to 'pomodoros'}}all pomodoros{{/link-to}}
+</ul>
