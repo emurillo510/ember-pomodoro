@@ -1,1 +1,16 @@
+{{#paper-toolbar as |toolbar|}}
+    {{#toolbar.tools}}
+        {{#link-to 'index'}}
+            {{#paper-button}}
+                ember pomodoro
+            {{/paper-button}}
+        {{/link-to}}
+        <span class="flex"></span>
+        {{#link-to 'pomodoros.new'}}
+          {{#paper-button mini=true}}
+              {{paper-icon "add"}}
+          {{/paper-button}}
+        {{/link-to}}
+    {{/toolbar.tools}}
+{{/paper-toolbar}}
 {{outlet}}
