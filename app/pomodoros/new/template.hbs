@@ -1,0 +1,13 @@
+<h1>New Pomodoro</h1>
+<p>
+    {{paper-input
+      label="Enter a task"
+      value=pomodoroName
+      onChange=(action (mut pomodoroName))
+      required="style"
+    }}
+    {{#paper-button onClick=(action 'addPomodoro')}}
+        Add
+    {{/paper-button}}
+  </p>
+{{outlet}}

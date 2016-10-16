@@ -1,0 +1,18 @@
+<h1>Pomodoro Show</h1>
+<ul>
+  <li>Id: {{model.id}}</li>
+  <li>Name: {{model.name}}</li>
+  <li>Status: {{model.status}}</li>
+</ul>
+{{#link-to 'pomodoros.inprogress' model}}
+    {{#paper-button raised=true warn=true}}
+        Let's Begin!
+    {{/paper-button}}
+{{/link-to}}
+
+    {{#paper-button raised=true warn=true}}
+        Complete
+    {{/paper-button}}
+    {{#paper-button raised=true warn=true}}
+        Note
+    {{/paper-button}}
