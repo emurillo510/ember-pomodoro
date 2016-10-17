@@ -55,7 +55,7 @@ export default Ember.Controller.extend({
     setTimerCommand(command){
       switch(command){
         case "START":
-          this.set('timerStatus', TIMER_STATUS_START)
+          this.set('timerStatus', TIMER_STATUS_START);
           break;
         case "STOP":
           this.set('timerStatus', TIMER_STATUS_STOP);
