@@ -1,7 +1,20 @@
-<ul>
-{{#each model as |pomodoro|}}
-    <li>{{#link-to 'pomodoros.show' pomodoro}}{{pomodoro.id}} | {{pomodoro.name}} | {{pomodoro.status}}{{/link-to}}</li>
-{{/each}}
+  {{#paper-content class="md-whiteframe-z1 list-demo"}}
+    {{#paper-list}}
+      {{#each model as |pomodoro|}}
+        {{#paper-item class="md-3-line"}}
+            <img src="http://miguelcobain.github.io/ember-paper/release-1/tomster-9918e85a7f1a28c78b484c34cbe88579.png" alt={{pomodoro.id}} class="md-avatar">
+            <div class="md-list-item-text">
+                {{#link-to 'pomodoros.show' pomodoro}}
+                <h3>{{pomodoro.id}}</h3>
+                <h4>{{pomodoro.name}}</h4>
+                <p>
+                  {{pomodoro.status}}
+                </p>
+                {{/link-to}}
+            </div>
+        {{/paper-item}}
+      {{/each}}
+    {{/paper-list}}
+  {{/paper-content}}
 
 {{#link-to 'pomodoros'}}all pomodoros{{/link-to}}
-</ul>

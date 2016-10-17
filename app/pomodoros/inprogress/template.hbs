@@ -1,15 +1,33 @@
-<h1>Pomodoro Show</h1>
+<h2>Pomodoro Time!</h2>
+{{#paper-button raised=true warn=true onClick=(action 'setInitialTime' 'POMODORO')}}
+Pomodoro
+{{/paper-button}}
+{{#paper-button raised=true warn=true onClick=(action 'setInitialTime' 'SHORT_BREAK')}}
+Short Break
+{{/paper-button}}
+{{#paper-button raised=true warn=true onClick=(action 'setInitialTime' 'LONG_BREAK')}}
+Long Break
+{{/paper-button}}
+<h3>System Clock: </h3>
+<h3>timerDuration: {{timeDuration}}</h3>
+<h3>timerStatus: {{timerStatus}}</h3>
+<h3>loop: {{loop}}</h3>
 <ul>
   <li>Id: {{model.id}}</li>
   <li>Name: {{model.name}}</li>
   <li>Status: {{model.status}}</li>
 </ul>
-{{#paper-button raised=true warn=true}}
-Pomodoro
+{{#paper-button raised=true warn=true onClick=(action 'setTimerCommand' 'START')}}
+Start
 {{/paper-button}}
-{{#paper-button raised=true warn=true}}
-Short Break
+{{#paper-button raised=true warn=true onClick=(action 'setTimerCommand' 'STOP')}}
+Stop
 {{/paper-button}}
-{{#paper-button raised=true warn=true}}
-Long Break
+{{#paper-button raised=true warn=true onClick=(action 'setTimerCommand' 'RESET')}}
+Reset
 {{/paper-button}}
+{{#link-to 'pomodoros.show' model}}
+  {{#paper-button raised=true warn=true}}
+  Reflect
+  {{/paper-button}}
+{{/link-to}}

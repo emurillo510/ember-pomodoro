@@ -3,8 +3,9 @@
     {{paper-input
       label="Enter a task"
       value=pomodoroName
-      onChange=(action (mut pomodoroName))
       required="style"
+      onChange=(action (mut pomodoroName))
+      autoFocus=true
     }}
     {{#paper-button onClick=(action 'addPomodoro')}}
         Add
