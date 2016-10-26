@@ -5,3 +5,8 @@ $warn: "amber";
 
 // Import the rest of ember-paper.
 @import "ember-paper";
+
+#timer {
+    position: absolute;
+    visibility: hidden;
+}
