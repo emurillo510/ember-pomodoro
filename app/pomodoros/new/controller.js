@@ -1,17 +1,13 @@
 import Ember from 'ember';
-import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/route';
 
 const ENTER_KEY_CODE = 13;
 
 export default Ember.Controller.extend(KeyboardShortcuts, {
     pomodoroName: "",
     actions: {
+ 
         addPomodoro(event) {
-            let keyCode = event.keyCode;
-
-            console.log('keyCode', keyCode);
-
-            if(keyCode == ENTER_KEY_CODE){
+            if(event.keyCode === ENTER_KEY_CODE || event.type === "click"){
                 let name = this.get('pomodoroName');
                 let status = "open";
 
@@ -28,11 +24,6 @@ export default Ember.Controller.extend(KeyboardShortcuts, {
                 });
             }
             
-        }
-    },
-    keyboardShortcuts: {
-        'enter': function(){
-            alert('hello');
         }
     }
 });
