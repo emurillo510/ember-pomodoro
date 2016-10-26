@@ -8,10 +8,7 @@ Short Break
 {{#paper-button raised=true warn=true onClick=(action 'setInitialTime' 'LONG_BREAK')}}
 Long Break
 {{/paper-button}}
-<h3>timerDuration: {{timeleftMin}}</h3>
-<h3>timerDuration: {{timeleftSec}}</h3>
-<h3>timerStatus: {{timerStatus}}</h3>
-<h3>loop: {{loop}}</h3>
+<h3>{{timeleftMin}} : {{timeleftSec}}</h3>
 <ul>
   <li>Id: {{model.id}}</li>
   <li>Name: {{model.name}}</li>
@@ -31,3 +28,4 @@ Reset
   Reflect
   {{/paper-button}}
 {{/link-to}}
+<h3 id="timer">{{loop}}</h3>

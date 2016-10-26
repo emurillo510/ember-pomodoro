@@ -6,20 +6,18 @@ const LONG_BREAK_SETTING = 600;
 
 const TIMER_STATUS_START = "START";
 const TIMER_STATUS_STOP = "STOP";
-const TIMER_STATUS_RESET = "RESET";
 
 export default Ember.Controller.extend({
   clock: Ember.inject.service('system-clock'),
 
-  timeDuration: 0,
-  timeleftMin: 0,
-  timeleftSec: 0,
-  initialTime: 0,
-  timerStatus: "STOP",
+  timeDuration: POMODORO_SETTING,
+  timeleftMin: Math.floor(1500/60),
+  timeleftSec: "00",
+  initialTime: POMODORO_SETTING,
+  timerStatus: TIMER_STATUS_STOP,
   loop: Ember.computed('clock.date', function(){
 
     let timeleft = this.get('timeDuration');
-
     let timeleftMin = Math.floor(timeleft / 60);
     let timeleftSec = timeleft % 60;
     let timerStatus = this.get('timerStatus');
@@ -30,16 +28,11 @@ export default Ember.Controller.extend({
            this.set('timerStatus', TIMER_STATUS_STOP);
          }
         this.set('timeDuration', (timeleft - 1));
-        this.set('timeleftMin', timeleftMin);
-        this.set('timeleftSec', timeleftSec);
-        console.log('min left ' + timeleftMin);
-        console.log('sec left ' + timeleftSec);
+        this.set('timeleftMin', this.formatTime(timeleftMin));
+        this.set('timeleftSec', this.formatTime(timeleftSec));
         break;
       case TIMER_STATUS_STOP:
         this.set('timeDuration', timeleft);
-        break;
-      case TIMER_STATUS_RESET:
-        this.set('timerStatus',TIMER_STATUS_STOP);
         break;
       default:
         break;
@@ -47,22 +40,32 @@ export default Ember.Controller.extend({
     }
     return this.get('clock.date');
   }),
+  formatTime(number){
+    if(number < 10){
+      return "0" + number;
+    } else {
+      return number;
+    }
+  },
   actions: {
     setInitialTime(setting){
       switch(setting){
         case "POMODORO":
-          this.set('timeDuration', 1500);
-          this.set('timeleftMin',  Math.floor(1500/60));
+          this.set('timeDuration',POMODORO_SETTING);
+          this.set('timeleftMin', this.formatTime(Math.floor(1500/60)));
+          this.set('timeleftSec', this.formatTime(0));
           this.set('initialTime', POMODORO_SETTING);
           break;
         case "SHORT_BREAK":
-          this.set('timeDuration', 300);
-          this.set('timeleftSec', Math.floor(300/60));
+          this.set('timeDuration', SHORT_BREAK_SETTING);
+          this.set('timeleftMin', this.formatTime(Math.floor(300/60)));
+          this.set('timeleftSec', this.formatTime(0));
           this.set('initialTime', SHORT_BREAK_SETTING);
           break;
         case "LONG_BREAK":
-          this.set('timeDuration', 600);
-          this.set('timeleftSec', Math.floor(600/60));
+          this.set('timeDuration', LONG_BREAK_SETTING);
+          this.set('timeleftMin', Math.floor(600/60));
+          this.set('timeleftSec', this.formatTime(0));
           this.set('initialTime', LONG_BREAK_SETTING);
           break;
         default:
@@ -78,13 +81,13 @@ export default Ember.Controller.extend({
           this.set('timerStatus', TIMER_STATUS_STOP);
           break;
         case "RESET":
-          this.set('timerStatus', TIMER_STATUS_RESET);
+          this.set('timerStatus', TIMER_STATUS_STOP);
           let initialTime = this.get('initialTime');
           let timeleftMin = Math.floor(initialTime / 60);
           let timeleftSec = initialTime % 60;
-          this.set('timeDuration', initialTime);
-          this.set('timeleftMin', timeleftMin);
-          this.set('timeleftSec', timeleftSec);
+          this.set('timeDuration', this.formatTime(initialTime));
+          this.set('timeleftMin', this.formatTime(timeleftMin));
+          this.set('timeleftSec', this.formatTime(timeleftSec));
           break;
         default:
           break;
