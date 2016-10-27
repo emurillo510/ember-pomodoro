@@ -15,14 +15,30 @@ export default function() {
 
   this.get('/pomodoros', () => {
     return {
-     data: [/*{
+     data: [{
         type: "pomodoro",
         id: "1",
         attributes: {
-          name: 'pomodoro #00',
+          name: 'Finish this application',
           status: 'open'
         }
-      }*/]
+      },
+      {
+        type: "pomodoro",
+        id: "2",
+        attributes: {
+          name: 'Pay the bills',
+          status: 'open'
+        }
+      },
+      {
+        type: "pomodoro",
+        id: "3",
+        attributes: {
+          name: 'Reflect one what needs to be done.',
+          status: 'closed'
+        }
+      }]
     };
   });
 

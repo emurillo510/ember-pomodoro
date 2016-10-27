@@ -5,12 +5,12 @@
             <img src="http://miguelcobain.github.io/ember-paper/release-1/tomster-9918e85a7f1a28c78b484c34cbe88579.png" alt={{pomodoro.id}} class="md-avatar">
             <div class="md-list-item-text">
                 {{#link-to 'pomodoros.show' pomodoro}}
-                <h3>{{pomodoro.id}}</h3>
-                <h4>{{pomodoro.name}}</h4>
+                <h3>{{pomodoro.name}}</h3>
                 <p>
                   {{pomodoro.status}}
                 </p>
                 {{/link-to}}
+                {{paper-icon "delete"}}
             </div>
         {{/paper-item}}
       {{/each}}
